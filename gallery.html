@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Grant Hope Ministries Uganda</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <style>
+            /* Background gradient for entire page */
+            body {
+                background: linear-gradient(135deg, #f0e4d7, #c7d2fe);
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+
+            /* Center and animate heading and paragraph */
+            h1, p {
+                text-align: center;
+                animation: fadeInUp 1s ease forwards;
+                opacity: 0;
+            }
+
+            /* Staggered animation delay */
+            h1 {
+                animation-delay: 0.3s;
+                font-size: 2.5rem;
+                color: #374151; /* Dark slate */
+                font-weight: 700;
+                letter-spacing: 2px;
+            }
+
+            p:first-of-type {
+                animation-delay: 0.7s;
+                max-width: 800px;
+                margin: 0 auto 40px auto;
+                font-size: 1.1rem;
+                color: #4b5563;
+                line-height: 1.6;
+            }
+
+            /* Fade-in and slight upward movement */
+            @keyframes fadeInUp {
+                0% {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Gallery images container */
+            p {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 25px;
+                margin: 0 auto;
+                max-width: 1200px;
+            }
+
+            /* Each image styling */
+            p img {
+                border-radius: 15px;
+                box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                cursor: pointer;
+                width: 300px;
+                height: 300px;
+                object-fit: cover;
+                opacity: 0;
+                animation: fadeInScale 0.8s forwards;
+            }
+
+            /* Slight scale and fade-in animation */
+            @keyframes fadeInScale {
+                from {
+                    opacity: 0;
+                    transform: scale(0.85);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            /* Animate images with a small delay based on index */
+            p img:nth-child(1) { animation-delay: 0.5s; }
+            p img:nth-child(2) { animation-delay: 0.7s; }
+            p img:nth-child(3) { animation-delay: 0.9s; }
+            p img:nth-child(4) { animation-delay: 1.1s; }
+            p img:nth-child(5) { animation-delay: 1.3s; }
+
+            /* Hover zoom and shadow */
+            p img:hover {
+                transform: scale(1.1);
+                box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+            }
+
+            /* Lightbox overlay styles */
+            #lightboxOverlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw; height: 100vh;
+                background: rgba(0,0,0,0.8);
+                display: none;
+                justify-content: center;
+                align-items: center;
+                cursor: zoom-out;
+                z-index: 1000;
+            }
+            #lightboxOverlay img {
+                max-width: 90vw;
+                max-height: 90vh;
+                border-radius: 10px;
+                box-shadow: 0 0 30px rgba(255,255,255,0.7);
+            }
+        </style>
+    </head>
+
+    <header>
+        <div class="logo-container">
+            <img src="./photos/favpng_208b7baafc511039b05a2417690e04cf.png" alt="Grant Hope Ministries Logo" class="logo">
+            <div class="site-title">
+                <h1>GRANT HOPE MINISTRIES UGANDA</h1>
+                <p>Transforming lives in the world</p>
+            </div>
+        </div>
+        <p align="right">Email: joramlinton@gmail.com <br>
+           Contact: +256 758970505, +256 785422155</p>
+           <div class="social-icons">
+            <a href="https://facebook.com" target="_login"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_logink"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+          </div> 
+    </header>
+    <nav>
+        <a href="COVER.html">COVER</a>
+        <a href="Home.html">HOME</a>
+        <a href="about.html">ABOUT US</a>
+        <a href="services.html">SERVICES</a>
+        <a href="gallery.html">GALLERY</a>
+        <a href="contact.html">CONTACT US</a>
+    </nav>
+    <body>
+        <h1 align="center">GALLERY SECTION</h1>
+        <p align="center">Our gallery showcases the heart of Grant Hope Ministries—stories of hope, transformation, and love in action. Through these photos, you’ll see the children we serve, our community outreach efforts, educational programs, and special events. Each image captures the impact of your support and the difference we are making together in the lives of vulnerable children in Uganda. </p>
+        <p>
+            <img src="./photos/1L7A2535-1024x683.jpg" width="500" height="500" alt="Gallery Image 1">
+            <img src="./photos/DSC_8545-scaled.jpg" width="450" height="500" alt="Gallery Image 2">
+            <img src="./photos/food.jpg" width="500" height="500" alt="Gallery Image 3">
+            <img src="./photos/images (2).jpeg" width="500" height="500" alt="Gallery Image 4">
+        </p>
+
+        <!-- Lightbox Overlay for image click -->
+        <div id="lightboxOverlay">
+          <img src="" alt="Enlarged image" />
+        </div>
+
+        <script>
+          const lightbox = document.getElementById('lightboxOverlay');
+          const lightboxImg = lightbox.querySelector('img');
+
+          // Select all gallery images inside the <p> container
+          document.querySelectorAll('p img').forEach(img => {
+            img.style.cursor = 'zoom-in'; // pointer on hover
+            img.addEventListener('click', () => {
+              lightboxImg.src = img.src;
+              lightbox.style.display = 'flex';
+            });
+          });
+
+          // Clicking outside the image or on overlay closes lightbox
+          lightbox.addEventListener('click', (e) => {
+            if(e.target === lightbox || e.target === lightboxImg) {
+              lightbox.style.display = 'none';
+              lightboxImg.src = '';
+            }
+          });
+        </script>
+    </body>
+</html>
